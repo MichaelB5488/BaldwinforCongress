@@ -3,141 +3,177 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Baldwin for Congress</title>
+  <title>Baldwin for Congress — 2026</title>
+  <meta name="description" content="Official campaign site for Michael Baldwin running for U.S. House of Representatives in 2026." />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f4f4;
-      color: #222;
-    }
-    header {
-      background: #0b2e59;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    header h1 { margin: 0; font-size: 2.5em; }
-    nav {
-      background: #153f75;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      padding: 12px 0;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 30px 20px;
-      background: white;
-    }
-    .hero-images {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-    .hero-images img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-    .section { margin-bottom: 40px; }
-    .section h2 { color: #0b2e59; }
-    .issues li { margin-bottom: 10px; }
-    .cta {
-      background: #c62828;
-      color: white;
-      padding: 15px 25px;
-      display: inline-block;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #0b2e59;
-      color: white;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-    }
-    form button {
-      background: #0b2e59;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      cursor: pointer;
+    :root{--blue:#0b2e59;--blue2:#153f75;--red:#c62828;--bg:#f4f4f4;--text:#111827;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:var(--bg);color:var(--text);line-height:1.5}
+    header{background:var(--blue);color:#fff;padding:44px 18px;text-align:center}
+    header h1{margin:0;font-size:2.2rem;letter-spacing:.5px}
+    header p{margin:.5rem 0 0;color:#e5e7eb}
+    nav{position:sticky;top:0;background:var(--blue2);display:flex;justify-content:center;gap:18px;padding:10px 8px;z-index:10}
+    nav a{color:#fff;text-decoration:none;font-weight:700;padding:6px 8px;border-radius:6px}
+    nav a:hover{background:rgba(255,255,255,.12)}
+    .wrap{max-width:1100px;margin:0 auto;padding:22px}
+    .card{background:#fff;border-radius:14px;padding:18px 18px;box-shadow:0 4px 14px rgba(0,0,0,.06);margin:16px 0}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:14px}
+    .hero-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+    .hero-images img{width:100%;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.12);object-fit:cover}
+    h2{color:var(--blue);margin-top:0}
+    ul{padding-left:18px}
+    .cta{display:inline-block;background:var(--red);color:#fff;text-decoration:none;padding:12px 18px;border-radius:8px;font-weight:800}
+    .cta.secondary{background:var(--blue)}
+    .two-col{display:grid;grid-template-columns:1fr;gap:14px}
+    form input, form textarea{width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:8px;font-size:1rem}
+    form button{background:var(--blue);color:#fff;border:0;padding:12px 16px;border-radius:8px;font-weight:800;cursor:pointer}
+    .socials{display:flex;gap:10px;flex-wrap:wrap}
+    .socials a{text-decoration:none;color:var(--blue);font-weight:700}
+    footer{text-align:center;padding:20px;background:var(--blue);color:#fff;margin-top:28px}
+    @media(min-width:780px){
+      .hero-grid{grid-template-columns:1.2fr .8fr;align-items:center}
+      .two-col{grid-template-columns:1fr 1fr}
+      header h1{font-size:2.6rem}
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Baldwin for Congress</h1>
+  <h1>Michael Baldwin for Congress</h1>
   <p>Putting Families, Community, and Accountability First</p>
 </header>
 
 <nav>
   <a href="#about">About</a>
   <a href="#issues">Issues</a>
+  <a href="#events">Events</a>
   <a href="#volunteer">Volunteer</a>
   <a href="#donate">Donate</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<div class="container">
+<main class="wrap">
 
-    <div class="hero-images">
-    <img src="assets/IMG_2183.jpeg" alt="Family photo 1">
-    <img src="assets/IMG_5046.jpeg" alt="Family photo 2">
-    <img src="assets/IMG_4734.jpeg" alt="Family photo 3">
-  </div>
+  <section class="card hero-grid" id="top">
+    <div>
+      <h2>A Voice for New Jersey’s 10th District</h2>
+      <p>
+        I’m running for Congress to fight for working families, protect our communities,
+        and bring honesty back to government. Let’s build a safer, more affordable, and
+        more accountable future — together.
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+        <a class="cta secondary" href="#volunteer">Volunteer</a>
+        <a class="cta" href="#donate">Donate</a>
+      </div>
+    </div>
 
-  <div class="section" id="about">
+    <div class="hero-images" aria-label="Campaign photos">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...TRIMMED_FOR_DISPLAY...==" alt="Michael Baldwin with family" />
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...TRIMMED_FOR_DISPLAY...==" alt="Michael Baldwin family photo outdoors" />
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...TRIMMED_FOR_DISPLAY...==" alt="Michael Baldwin with loved ones" />
+    </div>
+  </section>
+
+  <section class="card" id="about">
     <h2>Meet Michael Baldwin</h2>
     <p>
-      Michael Baldwin is a dedicated father, community advocate, and everyday working American running for the U.S. House of Representatives.
-      He believes government should serve families, protect freedoms, and restore honesty to Washington. Michael is committed to fighting
-      for affordable living, strong local economies, and safe communities.
+      Michael Baldwin is a dedicated father, community advocate, and everyday working American running
+      for the U.S. House of Representatives. He believes government should serve families, protect freedoms,
+      and restore honesty to Washington.
     </p>
-  </div>
+    <p>
+      Michael is committed to fighting for affordable living, strong local economies, and safe communities
+      across New Jersey’s 10th District.
+    </p>
+  </section>
 
-  <div class="section" id="issues">
-    <h2>Key Issues</h2>
-    <ul class="issues">
-      <li>Lowering the cost of living for working families</li>
-      <li>Protecting parental rights and family values</li>
-      <li>Small business support and job creation</li>
-      <li>Government transparency and accountability</li>
-      <li>Public safety and law enforcement support</li>
+  <section class="card" id="issues">
+    <h2>Issues & Priorities</h2>
+    <div class="two-col">
+      <div>
+        <h3 style="margin-top:0">Lower Costs for Families</h3>
+        <p class="muted">Cut the cost of groceries, rent, gas, and everyday essentials by focusing on practical,
+          pro-worker solutions.</p>
+
+        <h3>Public Safety & Strong Communities</h3>
+        <p class="muted">Support law enforcement, stop violent crime, and fund community programs that keep our neighborhoods safe.</p>
+
+        <h3>Jobs & Small Business</h3>
+        <p class="muted">Back small businesses, create good local jobs, and keep opportunity here at home.</p>
+      </div>
+      <div>
+        <h3 style="margin-top:0">Parental Rights & Education</h3>
+        <p class="muted">Parents deserve a real voice in their kids’ education and a school system focused on success.</p>
+
+        <h3>Transparency & Accountability</h3>
+        <p class="muted">End backroom deals, demand clear answers, and put voters — not special interests — first.</p>
+
+        <h3>Healthcare That Works</h3>
+        <p class="muted">Affordable, accessible care and real support for mental health and addiction recovery.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="events">
+    <h2>Events</h2>
+    <p>Come meet Michael and the team. New events are added weekly.</p>
+    <ul>
+      <li><strong>Town Hall</strong> — Date TBD — Newark / East Orange area</li>
+      <li><strong>Volunteer Meetup</strong> — Date TBD — Bloomfield / Montclair area</li>
     </ul>
-  </div>
+    <p style="margin-bottom:0"><em>Want an event near you?</em> Email us below.</p>
+  </section>
 
-  <div class="section" id="volunteer">
-    <h2>Volunteer With The Campaign</h2>
-    <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
+  <section class="card" id="volunteer">
+    <h2>Volunteer</h2>
+    <p>Sign up to canvass, make calls, host a meet-and-greet, or help online.</p>
+
+    <!-- EASY no-code form: replace the action URL with your Formspree link when ready -->
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <input name="name" placeholder="Full name" required>
+      <input type="email" name="email" placeholder="Email address" required>
+      <input name="phone" placeholder="Phone (optional)">
       <textarea name="message" rows="4" placeholder="How would you like to help?"></textarea>
-      <button type="submit">Sign Up</button>
+      <button type="submit">Join the Team</button>
     </form>
-  </div>
+  </section>
 
-  <div class="section" id="donate">
-    <h2>Support the Campaign</h2>
-    <p>Your donation helps us reach more voters and build a stronger movement.</p>
-    <a class="cta" href="#">Donate Now</a>
-  </div>
+  <section class="card" id="donate">
+    <h2>Donate</h2>
+    <p>Your support helps us reach more voters and win this seat.</p>
+    <!-- Replace href with your ActBlue/WinRed/Stripe link -->
+    <a class="cta" href="https://example.com/donate" target="_blank" rel="noopener">Donate Now</a>
+    <p style="font-size:.9rem;color:var(--muted);margin-top:8px">
+      *We’ll swap this link to your official donation page as soon as you send it to me.
+    </p>
+  </section>
 
-</div>
+  <section class="card" id="contact">
+    <h2>Contact</h2>
+    <p>Questions, endorsements, or press inquiries — reach out.</p>
+    <div class="two-col">
+      <div>
+        <p><strong>Email:</strong> <a href="mailto:info@baldwinforcongress.com">info@baldwinforcongress.com</a></p>
+        <p><strong>Phone:</strong> (555) 555-0123</p>
+        <p><strong>HQ:</strong> Newark, NJ</p>
+      </div>
+      <div>
+        <div class="socials">
+          <a href="https://facebook.com/yourpage" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://instagram.com/yourpage" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://x.com/yourpage" target="_blank" rel="noopener">X / Twitter</a>
+          <a href="https://youtube.com/yourpage" target="_blank" rel="noopener">YouTube</a>
+        </div>
+        <p style="margin-top:10px;color:var(--muted);font-size:.95rem">
+          Send me your real social links and I’ll drop them in.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <footer>
   <p>Paid for by Baldwin for Congress Committee</p>
