@@ -7,200 +7,398 @@
 
   <style>
     :root{
-      --blue:#0b2e59;
-      --blue2:#153f75;
-      --red:#c62828;
-      --bg:#f4f4f4;
-      --text:#111827;
+      --ink:#0b1020;
+      --bg:#f6f7fb;
+      --white:#ffffff;
+
+      /* keep your campaign colors */
+      --primary:#0b2e59;  /* navy */
+      --primary-2:#153f75;
+      --accent:#c62828;   /* red */
+      --accent-2:#f2c94c; /* warm highlight */
       --muted:#6b7280;
+
+      --radius:18px;
+      --shadow:0 10px 30px rgba(11,16,32,.10);
+      --maxw:1120px;
     }
+
     *{box-sizing:border-box}
     body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      margin:0;background:var(--bg);color:var(--text);line-height:1.55
+      line-height:1.55;
     }
+
+    /* top slim bar like Kat’s */
+    .topbar{
+      background:var(--ink);
+      color:#fff;
+      font-weight:700;
+      font-size:.95rem;
+      padding:8px 14px;
+      text-align:center;
+      letter-spacing:.2px;
+    }
+
     header{
-      background:var(--blue);color:#fff;padding:44px 18px;text-align:center
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.9);
+      backdrop-filter:saturate(140%) blur(8px);
+      border-bottom:1px solid #e6e8ef;
     }
-    header h1{margin:0;font-size:2.6rem;letter-spacing:.5px}
-    header p{margin:.5rem 0 0;color:#e5e7eb}
+    .navwrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:10px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.4px;
+      color:var(--primary);text-decoration:none;font-size:1.05rem;
+    }
+    .brand-dot{
+      width:34px;height:34px;border-radius:10px;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+    }
 
     nav{
-      position:sticky;top:0;background:var(--blue2);
-      display:flex;justify-content:center;gap:18px;padding:12px;z-index:10
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+      font-weight:800;font-size:.95rem;
     }
     nav a{
-      color:#fff;text-decoration:none;font-weight:700;padding:6px 12px;border-radius:8px
+      color:var(--ink);text-decoration:none;padding:8px 10px;border-radius:10px;
     }
-    nav a:hover{background:rgba(255,255,255,0.15)}
+    nav a:hover{background:#eef1f7}
 
-    .wrap{max-width:1100px;margin:0 auto;padding:22px}
-    .card{
-      background:#fff;border-radius:14px;padding:18px;
-      box-shadow:0 4px 14px rgba(0,0,0,.07);margin:22px 0
+    .nav-ctas{display:flex;gap:8px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 14px;border-radius:12px;font-weight:900;
+      text-decoration:none;border:2px solid transparent;cursor:pointer;
+      transition:.15s transform ease, .15s background ease;
+      white-space:nowrap;
     }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.outline{border-color:var(--ink);color:var(--ink);background:#fff}
 
-    .hero-grid{
-      display:grid;grid-template-columns:1fr;gap:20px;align-items:center
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:18px 14px 40px}
+
+    /* HERO like Kat: big headline left, photo right */
+    .hero{
+      margin-top:10px;
+      background:var(--white);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:22px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      position:relative;
+      overflow:hidden;
+      border:1px solid #e9ecf2;
     }
+    .hero::after{
+      content:"";
+      position:absolute;inset:-30% -10% auto auto;
+      width:460px;height:460px;border-radius:999px;
+      background:radial-gradient(circle at center, rgba(21,63,117,.12), transparent 60%);
+      pointer-events:none;
+    }
+    .hero h1{
+      font-size:clamp(2.1rem,4vw,3.2rem);
+      line-height:1.05;
+      margin:.2rem 0 .6rem;
+      letter-spacing:.3px;
+    }
+    .hero p{font-size:1.08rem;color:#1f2937;margin:0 0 12px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
 
-    /* BIG hero photo area */
     .hero-photo{
-      width:100%;
-      border-radius:14px;
+      border-radius:18px;
       overflow:hidden;
       background:#fff;
-      box-shadow:0 6px 20px rgba(0,0,0,.10);
+      border:1px solid #e8ebf2;
+      box-shadow:0 8px 18px rgba(0,0,0,.08);
     }
     .hero-photo img{
       width:100%;
-      height:auto;          /* shows full face */
+      height:auto; /* NO CROP */
       display:block;
     }
 
-    /* BIG gallery below hero */
-    .gallery{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:16px;
-      margin-top:8px;
-    }
-    .gallery img{
-      width:100%;
-      height:auto;
-      border-radius:14px;
-      display:block;
-      box-shadow:0 6px 18px rgba(0,0,0,.10);
+    @media(min-width:900px){
+      .hero{grid-template-columns:1.15fr .85fr;align-items:center;padding:28px}
     }
 
-    h2{color:var(--blue);margin-top:0}
-    h3{margin-bottom:6px}
-    ul{padding-left:18px}
-
-    .cta{
-      display:inline-block;background:var(--red);color:#fff;
-      padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:800
+    /* BIG action tiles (Kat vibe) */
+    .action-tiles{
+      margin-top:18px;
+      display:grid;grid-template-columns:1fr;gap:12px;
     }
-    .cta.secondary{background:var(--blue2)}
-
-    .two-col{
-      display:grid;grid-template-columns:1fr;gap:20px
+    .tile{
+      background:var(--white);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:var(--shadow);
+      border:1px solid #e9ecf2;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+    }
+    .tile h3{margin:0;font-size:1.25rem}
+    .tile p{margin:6px 0 0;color:var(--muted)}
+    .tile .btn{padding:9px 12px}
+    .tile.volunteer{border-left:8px solid var(--primary)}
+    .tile.donate{border-left:8px solid var(--accent)}
+    .tile.events{border-left:8px solid var(--accent-2)}
+    @media(min-width:820px){
+      .action-tiles{grid-template-columns:repeat(3,1fr)}
+      .tile{flex-direction:column;align-items:flex-start}
+      .tile .btn{margin-top:10px}
     }
 
-    @media(min-width:780px){
-      .hero-grid{grid-template-columns:1.1fr .9fr}
-      .gallery{grid-template-columns:repeat(3,1fr)}
+    /* Photo strip like Kat’s soft gallery */
+    .photo-strip{
+      margin-top:18px;
+      display:grid;grid-template-columns:1fr;gap:12px;
+    }
+    .photo-strip img{
+      width:100%;height:auto;border-radius:16px;display:block;box-shadow:var(--shadow);
+      border:1px solid #e9ecf2;
+    }
+    @media(min-width:820px){
+      .photo-strip{grid-template-columns:repeat(3,1fr)}
+    }
+
+    /* SECTION headings */
+    .section{
+      margin-top:22px;
+      background:var(--white);
+      border-radius:22px;
+      padding:20px;
+      box-shadow:var(--shadow);
+      border:1px solid #e9ecf2;
+    }
+    .section h2{
+      margin:0 0 10px;
+      font-size:1.8rem;
+      letter-spacing:.3px;
+      color:var(--primary);
+    }
+    .divider{
+      height:6px;width:80px;border-radius:999px;background:var(--accent);margin:6px 0 14px;
+    }
+
+    /* Issues blocks, big and simple */
+    .issues{
+      display:grid;grid-template-columns:1fr;gap:12px;
+    }
+    .issue{
+      padding:16px;border-radius:16px;background:#f9fafc;border:1px solid #e6e9f0;
+    }
+    .issue h3{margin:0 0 6px;font-size:1.2rem}
+    .issue p{margin:0;color:#374151}
+    @media(min-width:820px){
+      .issues{grid-template-columns:repeat(2,1fr)}
+    }
+
+    /* Signup band */
+    .signup{
+      margin-top:18px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      color:#fff;border-radius:22px;padding:18px;
+      display:grid;grid-template-columns:1fr;gap:10px;align-items:center;
+      box-shadow:var(--shadow);
+    }
+    .signup h3{margin:0;font-size:1.5rem}
+    .signup p{margin:4px 0 0;color:#e5e7eb}
+    .signup form{display:flex;gap:8px;flex-wrap:wrap}
+    .signup input{
+      flex:1;min-width:220px;padding:12px;border-radius:12px;border:0;font-size:1rem;
+    }
+    .signup button{
+      padding:12px 16px;border-radius:12px;border:0;font-weight:900;cursor:pointer;
+      background:#fff;color:var(--primary);
+    }
+    @media(min-width:820px){
+      .signup{grid-template-columns:1.2fr .8fr}
     }
 
     footer{
-      text-align:center;background:var(--blue);color:#fff;
-      padding:20px;margin-top:40px
+      margin-top:22px;text-align:center;color:#fff;background:var(--ink);
+      padding:18px;font-weight:700;
     }
+    footer a{color:#fff}
   </style>
 </head>
-
 <body>
-<header>
-  <h1>Michael Baldwin for Congress</h1>
-  <p>Putting Families, Community, and Accountability First</p>
-</header>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#issues">Issues</a>
-  <a href="#events">Events</a>
-  <a href="#volunteer">Volunteer</a>
-  <a href="#donate">Donate</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <div class="topbar">
+    New Jersey’s 10th District • 2026 Election
+  </div>
 
-<main class="wrap">
+  <header>
+    <div class="navwrap">
+      <a class="brand" href="#top">
+        <span class="brand-dot"></span>
+        Baldwin for Congress
+      </a>
 
-  <section class="card hero-grid" id="top">
-    <div>
-      <h2>A Voice for New Jersey’s 10th District</h2>
-      <p>
-        I’m running for Congress to fight for working families, protect our communities,
-        and bring honesty back to government. Let’s build a safer, more affordable,
-        and more accountable future — together.
-      </p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#issues">Issues</a>
+        <a href="#events">Events</a>
+        <a href="#volunteer">Volunteer</a>
+        <a href="#donate">Donate</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-      <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="cta secondary" href="#volunteer">Volunteer</a>
-        <a class="cta" href="#donate">Donate</a>
+      <div class="nav-ctas">
+        <a class="btn outline" href="#volunteer">Volunteer</a>
+        <a class="btn primary" href="#donate">Donate</a>
       </div>
     </div>
+  </header>
 
-    <!-- BIG HERO PHOTO (no cropping) -->
-    <div class="hero-photo">
-      <img src="IMG_2183.jpeg" alt="Michael Baldwin with family">
-    </div>
-  </section>
+  <main class="wrap">
 
-  <!-- BIG PHOTO GALLERY -->
-  <section class="card">
-    <h2>Family & Community</h2>
-    <div class="gallery">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div>
+        <h1>Placeholder headline like Kat’s big hero line</h1>
+        <p>
+          Placeholder 2–3 sentence intro. We’ll rewrite this after layout feels right.
+        </p>
+        <div class="hero-actions">
+          <a class="btn outline" href="#volunteer">Volunteer</a>
+          <a class="btn primary" href="#donate">Donate</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <img src="IMG_2183.jpeg" alt="Michael Baldwin with family">
+      </div>
+    </section>
+
+    <!-- ACTION TILES -->
+    <section class="action-tiles" aria-label="Primary actions">
+      <div class="tile volunteer">
+        <div>
+          <h3>Volunteer</h3>
+          <p>Short 1-line pitch.</p>
+        </div>
+        <a class="btn outline" href="#volunteer">Join</a>
+      </div>
+
+      <div class="tile donate">
+        <div>
+          <h3>Donate</h3>
+          <p>Short 1-line pitch.</p>
+        </div>
+        <a class="btn primary" href="#donate">Give</a>
+      </div>
+
+      <div class="tile events">
+        <div>
+          <h3>Events</h3>
+          <p>Short 1-line pitch.</p>
+        </div>
+        <a class="btn outline" href="#events">See dates</a>
+      </div>
+    </section>
+
+    <!-- PHOTO STRIP -->
+    <section class="photo-strip" aria-label="Campaign photos">
       <img src="IMG_2183.jpeg" alt="Family photo 1">
       <img src="IMG_5046.jpeg" alt="Family photo 2">
       <img src="IMG_4734.jpeg" alt="Family photo 3">
-    </div>
-  </section>
+    </section>
 
-  <section class="card" id="about">
-    <h2>Meet Michael Baldwin</h2>
-    <p>
-      Michael Baldwin is a dedicated father, community advocate, and everyday working American
-      running for the U.S. House of Representatives. He believes government should serve families,
-      protect freedoms, and restore honesty to Washington.
-    </p>
-  </section>
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <h2>Meet Michael Baldwin</h2>
+      <div class="divider"></div>
+      <p>
+        Placeholder about section. We’ll write this after we lock layout.
+      </p>
+    </section>
 
-  <section class="card" id="issues">
-    <h2>Issues & Priorities</h2>
-    <div class="two-col">
-      <div>
-        <h3>Lower Costs for Families</h3>
-        <p>Cut grocery, rent, and energy costs through practical, pro-worker policies.</p>
+    <!-- ISSUES -->
+    <section class="section" id="issues">
+      <h2>Issues</h2>
+      <div class="divider"></div>
+
+      <div class="issues">
+        <div class="issue">
+          <h3>Issue title</h3>
+          <p>1–2 line placeholder.</p>
+        </div>
+        <div class="issue">
+          <h3>Issue title</h3>
+          <p>1–2 line placeholder.</p>
+        </div>
+        <div class="issue">
+          <h3>Issue title</h3>
+          <p>1–2 line placeholder.</p>
+        </div>
+        <div class="issue">
+          <h3>Issue title</h3>
+          <p>1–2 line placeholder.</p>
+        </div>
       </div>
+    </section>
+
+    <!-- SIGNUP BAND -->
+    <section class="signup" id="volunteer">
       <div>
-        <h3>Public Safety</h3>
-        <p>Strengthen communities by supporting law enforcement and crime-prevention programs.</p>
+        <h3>Get updates from the campaign</h3>
+        <p>Placeholder line. We’ll connect the form later.</p>
       </div>
-    </div>
-  </section>
+      <form>
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <button type="button">Sign up</button>
+      </form>
+    </section>
 
-  <section class="card" id="events">
-    <h2>Events</h2>
-    <p>Events will be posted here as the campaign schedule is finalized.</p>
-  </section>
+    <!-- EVENTS -->
+    <section class="section" id="events">
+      <h2>Events</h2>
+      <div class="divider"></div>
+      <p>Placeholder events list.</p>
+      <ul>
+        <li>Town Hall — Date TBD</li>
+        <li>Volunteer Meetup — Date TBD</li>
+      </ul>
+    </section>
 
-  <section class="card" id="volunteer">
-    <h2>Volunteer</h2>
-    <p>Sign up to canvass, make calls, host a meet-and-greet, or help online.</p>
-    <form action="https://formspree.io/f/your-form-id" method="POST">
-      <input name="name" placeholder="Full name" required>
-      <input type="email" name="email" placeholder="Email address" required>
-      <input name="phone" placeholder="Phone (optional)">
-      <textarea name="message" rows="4" placeholder="How would you like to help?"></textarea>
-      <button type="submit">Join the Team</button>
-    </form>
-  </section>
+    <!-- DONATE -->
+    <section class="section" id="donate">
+      <h2>Donate</h2>
+      <div class="divider"></div>
+      <p>Placeholder donation copy.</p>
+      <a class="btn primary" href="#">Donate Now</a>
+    </section>
 
-  <section class="card" id="donate">
-    <h2>Donate</h2>
-    <p>Your support helps us reach more voters and win this seat.</p>
-    <a class="cta" href="#" target="_blank" rel="noopener">Donate Now</a>
-  </section>
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <div class="divider"></div>
+      <p>Email / phone placeholders here for now.</p>
+    </section>
 
-  <section class="card" id="contact">
-    <h2>Contact</h2>
-    <p>Email: (add your email here)</p>
-  </section>
-</main>
+  </main>
 
-<footer>
-  Paid for by Baldwin for Congress Committee
-</footer>
+  <footer>
+    Paid for by Baldwin for Congress Committee
+  </footer>
+
 </body>
 </html>
