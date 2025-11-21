@@ -86,20 +86,34 @@
       gap:20px;
     }
 
+    /* ✅ CHANGED: no 3-column grid here anymore */
     .hero-images{
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
+      display:flex;
+      flex-direction:column;
       gap:14px;
     }
 
-    /*  🔥 FIXED PHOTO CROPPING — THIS IS THE IMPORTANT PART 🔥 */
+    /* ✅ GUARANTEED NO CROP */
     .hero-images img{
       width:100%;
       height:auto;
+      max-height:none;
       border-radius:12px;
-      object-fit:contain;   /* show FULL image */
-      background:#f4f4f4;
-      padding:6px;
+      display:block;
+    }
+
+    .placeholder{
+      border:2px dashed #d4d4d4;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:140px;
+      color:#6b7280;
+      font-weight:600;
+      background:#fafafa;
+      text-align:center;
+      padding:12px;
     }
 
     h2{color:var(--blue);}
@@ -131,10 +145,6 @@
       .hero-grid{
         grid-template-columns:1.2fr .8fr;
         align-items:center;
-      }
-
-      .hero-images{
-        grid-template-columns:1fr 1fr 1fr;
       }
 
       .two-col{
@@ -186,16 +196,12 @@
     </div>
 
     <div class="hero-images">
-      <!-- YOUR PHOTO 1 -->
+      <!-- YOUR PHOTO 1 (FULL WIDTH, NO CROP) -->
       <img src="assets/IMG_2183.jpeg" alt="Family photo 1">
 
       <!-- Placeholder boxes for future photos -->
-      <div style="border:2px dashed #d4d4d4; border-radius:12px; display:flex; align-items:center; justify-content:center;">
-        More family photos coming soon
-      </div>
-      <div style="border:2px dashed #d4d4d4; border-radius:12px; display:flex; align-items:center; justify-content:center;">
-        More family photos coming soon
-      </div>
+      <div class="placeholder">More family photos coming soon</div>
+      <div class="placeholder">More family photos coming soon</div>
     </div>
   </section>
 
